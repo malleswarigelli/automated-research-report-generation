@@ -3,7 +3,7 @@ import sys
 import json
 import asyncio
 from dotenv import load_dotenv
-from utils.config_loader import load_config
+from research_and_analyst.utils.config_loader import load_config
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
@@ -113,7 +113,7 @@ class ModelLoader:
         """
         try:
             llm_block = self.config["llm"]
-            provider_key = os.getenv("LLM_PROVIDER", "openai")
+            provider_key = os.getenv("LLM_PROVIDER", "groq")
 
             if provider_key not in llm_block:
                 log.error("LLM provider not found in configuration", provider=provider_key)
